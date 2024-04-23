@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <link rel="stylesheet" href="CSS.css">
+    <ul>
+        <li><a href="index.html">Home</a>
+
+        <li><a href="photos.html">Photos</a>
+
+        <li><a href="profile.html">Profile</a>
+
+        <li><a href="aboutus.html">About Us</a>
+
+        <li><a href="contactus.html">Contact Us</a>
+
+    </ul>
+
+
+    <style>
+
+        .dob-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-top:-100px;
+        }
+
+
+        .dob-container div:first-child {
+            margin-right: 0px;
+            margin-top: 115px;
+        }
+        label {
+            margin-top: -45px;
+        }
+        input {
+            margin-top: -45px;
+            width: 200px;
+            height: 35px;
+        }
+    </style>
+</head>
+<title>TorWeb</title>
+
+<body>
+
+<h1>TorWeb</h1>
+<hr>
+
+<h2>Profile</h2>
+
+
+<div class="dob-container">
+
+    <div>
+        <p><b>DoB</b></p>
+        <p><b>Username</b></p>
+        <p><b>First Name</b></p>
+        <p><b>Last Name</b></p>
+        <p><b>User Id</b></p>
+    </div>
+
+    <lab><label for="birthday"></label></lab>
+    <input type="date" id="birthday" name="birthday">
+
+    <input type="text" id="username" name="username" placeholder="Enter username" style="width: 197px; height: 35px; margin-top: 45px; margin-left: -205px">
+
+    <input type="text" id="firstName" name="firstname" placeholder="Enter first name" style="width: 197px; height: 35px; margin-top: 130px; margin-left: -205px">
+
+    <input type="text" id="lastname" name="lastname" placeholder="Enter last name" style="width: 197px; height: 35px; margin-top: 216px; margin-left: -205px">
+
+    <input type="number" id="ID" name="ID" placeholder="Enter ID" style="width: 197px; height: 35px; margin-top: 303px; margin-left: -205px" readonly>
+</div>
+</div>
+</body>
+</html>
