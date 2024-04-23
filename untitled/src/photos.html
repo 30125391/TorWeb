@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <ul>
+        <li><a href="index.html">Home</a>
+        <li>
+        <li><a href="photos.html">Photos</a>
+        <li>
+        <li><a href="profile.html">Profile</a>
+        <li>
+        <li><a href="aboutus.html">About Us</a>
+        <li>
+        <li><a href="contactus.html">Contact Us</a>
+        <li>
+    </ul>
+    <link rel="stylesheet" href="CSS.css">
+    <style>
+
+        .dob-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .dob-container div:first-child {
+            margin-right: 20px;
+            margin-top: 115px;
+        }
+
+    </style>
+</head>
+<title>TorWeb</title>
+
+<body>
+
+<h1>Torweb</h1>
+<hr>
+
+<h2>Photos</h2>
+</p>
+
+<form action="upload.php" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="MAX_FILE_SIZE" value="2000000">
+    <input type="file" name="fileToUpload" id="fileToUpload">
+    <input type="submit" value="upload">
+</form>
+
+</body>
+</html>

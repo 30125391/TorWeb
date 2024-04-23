@@ -8,23 +8,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id = $_POST["fname"];
     $userInputPassword = $_POST["lname"];
 
-    // Escape any special characters in ID and password to prevent SQL injection or other security issues
+    // Escape any special characters in ID and password to prevent issues
     $escaped_id = escapeshellarg($id);
     $escaped_password = escapeshellarg($userInputPassword);
 
     // Database connection parameters
-    $db_file = "C:\\Users\\30125391\\OneDrive - NESCol\\digital skills\\untitled\\TorWeb.accdb"; // Path to your Access database file
+    $db_file = "C:\\Users\\30125391\\OneDrive - NESCol\\digital skills\\untitled\\TorWeb.accdb";
 
     try {
-        // Construct the command to execute the Java program
-        $command = "java example \"$db_file\" $escaped_id $escaped_password";
-
+        // Execute the Java program and capture the output
+        $command = "java -cp \"C:\\Apps\\Lib\\*;C:\\Users\\30125391\\OneDrive - NESCol\\digital skills\\untitled\\out\\production\\untitled\" signIn \"$db_file\" $escaped_id $escaped_password";
         $output = shell_exec($command);
-        echo "<pre>$output</pre>";
 
+       
+        header("Location: ./index.html");
     } catch (Exception $e) {
-        // Error handling for database connection or query execution
-        echo "<pre>Database error: " . $e->getMessage() . "</pre>";
+        // Error handling for Java execution
+        echo "<pre>Java execution error: " . $e->getMessage() . "</pre>";
     }
 } else {
     // If form submission method is not POST
