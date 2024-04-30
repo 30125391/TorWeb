@@ -12,10 +12,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     try {
         // Execute the Java program and capture the output
-        $command = "java -cp \"C:\\Apps\\Lib\\*;C:\\Users\\30125391\\OneDrive - NESCol\\digital skills\\untitled\\out\\production\\untitled\" signUp \"$db_file\" \"$id\" \"$userInputPassword\"";
+        $command = "java -cp \"C:\\Apps\\DB\\*;C:\\Users\\30125391\\OneDrive - NESCol\\digital skills\\untitled\\out\\production\\untitled\" signUp \"$db_file\" \"$id\" \"$userInputPassword\"";
         $output = shell_exec($command);
-        // Print the output
-        echo "<pre>$output</pre>";
+
+        header("Location: ./index.html");
+        exit(); // Ensure script execution stops after redirection
 
     } catch (Exception $e) {
         // Error handling for Java execution

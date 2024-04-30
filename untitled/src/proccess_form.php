@@ -1,8 +1,5 @@
 <?php
-// Enable error reporting for debugging
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
+session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve ID and password from the form
     $id = $_POST["fname"];
@@ -13,15 +10,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $escaped_password = escapeshellarg($userInputPassword);
 
     // Database connection parameters
-    $db_file = "C:\\Users\\30125391\\OneDrive - NESCol\\digital skills\\untitled\\TorWeb.accdb";
+    $db_file = "C:/Users/30125391/OneDrive - NESCol/digital skills/untitled/TorWeb.accdb";
+
+    //$_SESSION['ID'] = $_POST["fname"];
+    $_SESSION['ID'] = $id;
+
 
     try {
         // Execute the Java program and capture the output
-        $command = "java -cp \"C:\\Apps\\Lib\\*;C:\\Users\\30125391\\OneDrive - NESCol\\digital skills\\untitled\\out\\production\\untitled\" signIn \"$db_file\" $escaped_id $escaped_password";
+        $command = "java -cp \"C:\\Apps\\DB\\*;C:\\Users\\30125391\\OneDrive - NESCol\\digital skills\\untitled\\out\\production\\untitled\" signIn \"$db_file\" $escaped_id $escaped_password";
         $output = shell_exec($command);
 
-       
-        header("Location: ./index.html");
+        // Check if authentication was successful
+        if ($output !== null && strpos($output, "authenticated") !== false) {
+            // Store the ID in a session variable
+            $_SESSION['user_id'] = $id;
+
+            // Redirect to profile page
+            header("Location: ./profile.php");
+            exit(); // Stop script execution after redirection
+        } else {
+            // Redirect the user to signIn.html if authentication failed
+            header("Location: ./signIn.html");
+            exit(); // Stop script execution after redirection
+        }
     } catch (Exception $e) {
         // Error handling for Java execution
         echo "<pre>Java execution error: " . $e->getMessage() . "</pre>";
@@ -30,4 +42,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // If form submission method is not POST
     echo "<pre>Form submission method is not POST.</pre>";
 }
+
 ?>

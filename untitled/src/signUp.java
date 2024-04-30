@@ -39,6 +39,7 @@ public class signUp {
                     statement.setString(4, username); // Set Alias to the username
                     statement.setString(5, ""); // Set FirstName to empty
                     statement.setString(6, ""); // Set LastName to empty
+
                     // Execute the update
                     int rowsAffected = statement.executeUpdate();
                     if (rowsAffected > 0) {

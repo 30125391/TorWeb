@@ -1,3 +1,18 @@
+<?php
+session_start();
+
+
+?>
+
+<script>
+    // Set values for input fields
+    document.getElementById("birthday").value = "<?php echo $_POST['dob']; ?>";
+    document.getElementById("username").value = "<?php echo $_POST['username']; ?>";
+    document.getElementById("firstName").value = "<?php echo $_POST['firstname']; ?>";
+    document.getElementById("lastname").value = "<?php echo $_POST['lastname']; ?>";
+    document.getElementById("ID").value = "<?php echo $_SESSION['user_id']; ?>";
+</script>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,16 +26,13 @@
             align-items: center;
             margin-top: -100px;
         }
-
         .dob-container div:first-child {
             margin-right: 0px;
             margin-top: 115px;
         }
-
         label {
             margin-top: -45px;
         }
-
         input {
             margin-top: -45px;
             width: 200px;
@@ -29,10 +41,18 @@
     </style>
 </head>
 <body>
-
 <h1>TorWeb</h1>
 <hr>
 <h2>Profile</h2>
+
+<script>
+    // Set values for input fields
+    document.getElementById("birthday").value = "<?php echo isset($_POST['dob']) ? $_POST['dob'] : ''; ?>";
+    document.getElementById("username").value = "<?php echo isset($_POST['username']) ? $_POST['username'] : ''; ?>";
+    document.getElementById("firstName").value = "<?php echo isset($_POST['firstname']) ? $_POST['firstname'] : ''; ?>";
+    document.getElementById("lastname").value = "<?php echo isset($_POST['lastname']) ? $_POST['lastname'] : ''; ?>";
+    document.getElementById("ID").value = "<?php echo isset($_SESSION['ID']) ? $_SESSION['ID'] : ''; ?>";
+</script>
 
 <form action="Profile_Data.php" method="post">
     <div class="dob-container">
@@ -55,13 +75,10 @@
         <input type="text" id="lastname" name="lastname" placeholder="Last Name"
                style="width: 197px; height: 35px; margin-top: 216px; margin-left: -205px">
 
-        <input type="text" id="ID" name="ID" placeholder="User ID"  style="width: 197px;
-        height: 35px; margin-top: 303px; margin-left: -205px" readonly>
+        <input type="text" id="ID" name="ID" placeholder="ID" style="width: 197px;
+            height: 35px; margin-top: 303px; margin-left: -205px" readonly>
     </div>
     <input type="submit" value="Update Profile">
 </form>
-
-
-
 </body>
 </html>

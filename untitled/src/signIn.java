@@ -1,6 +1,3 @@
-import java.awt.*;
-import java.io.*;
-import java.net.URI;
 import java.sql.*;
 
 public class signIn {
@@ -27,8 +24,8 @@ public class signIn {
 
             // Establish a connection
             try (Connection connection = DriverManager.getConnection(url)) {
-
                 System.out.println("Connected to database successfully.");
+
                 // Prepare and execute a query to check ID and password validity
                 String sql = "SELECT * FROM userDetails WHERE ID = ? AND Password = ?";
                 System.out.println("SQL query: " + sql);
@@ -38,27 +35,16 @@ public class signIn {
 
                     ResultSet resultSet = statement.executeQuery();
 
-                    // Initialize a boolean flag for authentication
-                    boolean authenticated = false;
-
-                    while (resultSet.next()) {
-                        int storedID = resultSet.getInt("ID");
-                        String storedPassword = resultSet.getString("Password");
-
-                        if (userInputID == storedID && userInputPassword.equals(storedPassword)) {
-                            authenticated = true;
-                            System.out.println("User authenticated!");
-                            break; // Exit the loop once authenticated
-                        }
-                    }
-
-                    if (authenticated) {
-                        // If authenticated, print success message and open index.html in the default web browser
-                        System.out.println("Authentication successful.");
+                    // Check if any rows were returned
+                    if (resultSet.next()) {
+                        // Authentication successful
+                        System.out.println("User authenticated!");
+                        System.out.println("authenticated");
                     } else {
-                        // If not authenticated, print failure message
+                        // Authentication failed
                         System.out.println("Authentication failed.");
                     }
+
                 } catch (SQLException e) {
                     System.out.println("Error executing query: " + e.getMessage());
                 }
@@ -69,5 +55,4 @@ public class signIn {
             System.out.println("Error loading JDBC driver: " + e.getMessage());
         }
     }
-
 }
