@@ -2,16 +2,12 @@
 <html lang="en">
 
 <head>
+    <title>TorWeb</title>
     <link rel="stylesheet" href="CSS.css">
+    <script src="script.js"></script>
 </head>
-<title>TorWeb</title>
 
 <body>
-
-<?php
-//  Execute the Java file and get the output
-$java_input = shell_exec('java -cp "C:\Users\30125391\OneDrive - NESCol\digital skills\untitled\src\example.java" example.java');
-?>
 
 <button type="button" onclick="window.location.href='signUp.html';">Sign Up</button>
 <h1>TorWeb</h1>
@@ -29,7 +25,12 @@ $java_input = shell_exec('java -cp "C:\Users\30125391\OneDrive - NESCol\digital 
     </div>
     <input type="submit" value="Submit">
 </form>
-<pre><?php echo $java_input; ?></pre>
+<br>
+<div class="font-buttons">
+    <button onclick="increaseFontSize()">Increase Font Size</button>
+    <button onclick="resetFontSize()">Reset Font Size</button>
+</div>
+
 </body>
 
 </html>

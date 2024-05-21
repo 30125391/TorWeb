@@ -1,7 +1,9 @@
-body, h1, h2, ul, li, p, form {
+oijn
+body, h1, h2, h3, ul, li, p, form {
     margin: 0;
     padding: 0;
 }
+
 
 
 body {
@@ -21,6 +23,11 @@ h1 {
 
 h2 {
     text-align: center;
+}
+
+h3 {
+    text-align: center;
+    margin-top: 50px;
 }
 
 
@@ -55,14 +62,12 @@ hr {
 }
 
 
-form {
-    text-align: center;
-}
+
 
 .form-group {
     display: inline-block;
     width: 200px;
-    text-align: left;
+    text-align: center;
 }
 
 label {
@@ -140,7 +145,7 @@ b{
 }
 img {
     width: 325px;
-    margin-right: 20px;
+    margin-right: 60px;
 }
 
 .input[type="file"],
@@ -157,7 +162,6 @@ input[type="submit"] {
 }
 
 
-
 scroll-container {
     overflow-x: auto; /* Enable horizontal scrolling */
     white-space: nowrap; /* Prevent line breaks */
@@ -165,26 +169,77 @@ scroll-container {
 }
 
 /* Optional: Style for the form */
-#uploadForm {
+uploadForm {
     padding: 10px; /* Add padding for better appearance */
 }
 
+.button-large {
+    font-size: 20px; /* Adjust font size as needed */
+    padding: 15px 20px; /* Adjust padding as needed*/
+}
 
 
-
-
-
-
-
-
-
-#gallery {
+/* CSS for file upload container */
+.file-upload {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start; /* Align items to the left side */
 }
 
-#gallery img {
-    width: 200px; /* Adjust the width of the images as needed */
-    margin: 10px; /* Add margin between images */
+/* CSS for larger buttons */
+#uploadForm input[type="file"] {
+    font-size: 18px; /* Adjust the font size to make the buttons larger */
+    padding: 10px 20px; /* Adjust the padding to increase the button size */
 }
+
+#uploadForm input[type="button"] {
+    font-size: 18px;
+    padding: 10px 20px;
+    margin-left: 20px;
+
+}
+
+
+
+/* CSS for button container */
+.button-container {
+    margin-top: 200px;
+    margin-left: 20px;
+}
+
+@media only screen and (max-width: 810px) {
+    .text-container {
+        width: 85% !important;
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    .button-container {
+        position: relative;
+        top: 350px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+
+    .scrollable-div {
+        width: 90%;
+        max-width: 100%;
+        position: relative;
+        top: 0;
+        right: auto;
+    }
+}
+
+@media only screen and (max-width: 765px) {
+    iframe {
+        height: 200px;
+        width: 90%;
+        max-width: none;
+        margin: 0 auto;
+        display: block;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+}
+

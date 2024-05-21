@@ -1,51 +1,33 @@
 <?php
-// Start or resume the session
 session_start();
+$user_id = $_SESSION['user_id'];
+// Check if a profile picture is uploaded
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["profile-picture"])) {
+    // Array of acceptable file extensions
+    $acceptable_extensions = array("jpg", "jpeg", "png");
 
-$db_name = "C:/Users/30125391/OneDrive - NESCol/digital skills/untitled/TorWeb.accdb";
+    // Get the file extension of the uploaded file
+    $file_extension = strtolower(pathinfo($_FILES["profile-picture"]["name"], PATHINFO_EXTENSION));
 
-// Get user ID from session
-$user_id = $_SESSION[ID];
+    // Check if the uploaded file has an acceptable extension
+    if (in_array($file_extension, $acceptable_extensions)) {
+        // Construct the file path for the new profile picture
+        $target_dir = "C:\\Users\\30125391\\OneDrive - NESCol\\digital skills\\untitled\\profilepics\\";
+        $target_file = $target_dir . $user_id . "." . $file_extension;
 
-// Create connection to the database
-$conn = new mysqli($db_name);
+        // Delete the old profile picture if it exists
+        if (file_exists($target_file)) {
+            unlink($target_file);
+        }
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+        // Upload the new profile picture
+        if (move_uploaded_file($_FILES["profile-picture"]["tmp_name"], $target_file)) {
+            echo "The file ". htmlspecialchars(basename($_FILES["profile-picture"]["name"])). " has been uploaded.";
+        } else {
+            echo "Sorry, there was an error uploading your file.";
+        }
+    } else {
+        echo "Invalid file format. Please upload a JPG, JPEG, or PNG file.";
+    }
 }
-
-// Prepare a statement
-$sql = "SELECT * FROM userDetails WHERE ID = ?";
-$stmt = $conn->prepare($sql);
-
-if ($stmt === false) {
-    die("Error in preparing statement: " . $conn->error);
-}
-
-// Bind parameters
-$stmt->bind_param("s", $user_id);
-
-// Execute statement
-$stmt->execute();
-
-// Get result
-$result = $stmt->get_result();
-
-if ($result->num_rows > 0) {
-    // Fetch data
-    $row = $result->fetch_assoc();
-
-    // Set retrieved values to session
-    $_SESSION['username'] = $row['Alias'];
-    $_SESSION['firstname'] = $row['FirstName'];
-    $_SESSION['lastname'] = $row['LastName'];
-    $_SESSION['dob'] = $row['DOB'];
-} else {
-    echo "User not found";
-}
-
-// Close statement and connection
-$stmt->close();
-$conn->close();
 ?>

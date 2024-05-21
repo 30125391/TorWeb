@@ -1,65 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+    <title>TorWeb</title>
     <ul>
-        <li><a href="index.html">Home</a>
-        <li>
-        <li><a href="photos.html">Photos</a>
-        <li>
-        <li><a href="profile.html">Profile</a>
-        <li>
-        <li><a href="aboutus.html">About Us</a>
-        <li>
-        <li><a href="contactus.html">Contact Us</a>
-        <li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="photos.html">Photos</a></li>
+        <li><a href="profile.php">Profile</a></li>
+        <li><a href="aboutus.html">About Us</a></li>
+        <li><a href="contactus.html">Contact Us</a></li>
     </ul>
     <link rel="stylesheet" href="CSS.css">
+    <script src="script.js"></script>
     <style>
-
-        {
-            uploadForm {
-                position: relative;
-                top: auto;
-                right: auto;
-            }
-        }
-
+        /* Add your CSS styles here */
     </style>
 </head>
-<title>TorWeb</title>
-
 <body>
-
 <h1>Torweb</h1>
 <hr>
-
 <h2>Photos</h2>
-</p>
 <br>
-
-<div style="width:550px;height:400px;position: fixed;right: 0;top: 200px;line-height:3em;overflow:scroll;padding:5px;background-color:#FCFADD;color:#714D03;border:4px double #DEBB07; z-index: 999;">
+<div id="photo-container" style="width:550px;height:400px;position: fixed;right: 0;top: 200px;line-height:3em;overflow:scroll;padding:5px;background-color:#FCFADD;color:#714D03;border:4px double #DEBB07; z-index: 999;">
     Scroll To See Photos.
 
-
-    <figure>
+    <figure id="image1">
         <img src="dumps/1.jpg" alt="Image 1">
-        <figcaption>Caption for Image 1</figcaption>
+        <figcaption>Loading...</figcaption>
     </figure>
 
-    <figure>
+    <figure id="image2">
         <img src="dumps/2.png" alt="Image 2">
-        <figcaption>Caption for Image 2</figcaption>
+        <figcaption>Loading...</figcaption>
     </figure>
 
-    <figure>
+    <figure id="image3">
         <img src="dumps/3" alt="Image 3">
-        <figcaption>Caption for Image 3</figcaption>
+        <figcaption>Loading...</figcaption>
     </figure>
-
 </div>
 
-<form action="upload.php" method="post" enctype="multipart/form-data">
+<form action="upload.php" method="post" enctype="multipart/form-data" id="uploadForm">
 
     <input type="hidden" name="MAX_FILE_SIZE" value="2000000">
 
@@ -70,6 +50,55 @@
     <input type="submit" value="Upload Image" name="submit">
 </form>
 
+<script>
+    // Function to fetch captions from text file and update HTML
+    function fetchCaptionsAndUpdate() {
+        fetch('src/captions.txt')
+            .then(response => response.text())
+            .then(data => {
+                const captions = data.split('\n');
+                document.getElementById('image1').querySelector('figcaption').innerText = captions[0] || 'No caption';
+                document.getElementById('image2').querySelector('figcaption').innerText = captions[1] || 'No caption';
+                document.getElementById('image3').querySelector('figcaption').innerText = captions[2] || 'No caption';
+            })
+            .catch(error => console.error('Error fetching captions:', error));
+    }
+
+    // Call the function when the page loads
+    fetchCaptionsAndUpdate();
+</script>
+
+<script>
+    function uploadFile() {
+        var form = document.getElementById("uploadForm");
+        var formData = new FormData(form);
+
+        // You can add additional logic here before submitting the form
+
+        // Submit the form
+        fetch(form.action, {
+            method: "POST",
+            body: formData
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(data => {
+                console.log(data); // Handle response
+            })
+            .catch(error => {
+                console.error('There has been a problem with your fetch operation:', error);
+            });
+    }
+</script>
+
+<div class="font-buttons">
+    <button onclick="increaseFontSize()">Increase Font Size</button>
+    <button onclick="resetFontSize()">Reset Font Size</button>
+</div>
 
 </body>
 </html>

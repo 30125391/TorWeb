@@ -1,37 +1,34 @@
-import java.awt.Desktop;
-import java.io.File;
-import java.io.IOException;
 import java.sql.*;
 import java.util.Random;
 
 public class signUp {
     public static void main(String[] args) {
+
         if (args.length < 3) {
-            System.out.println("Usage: java SignUp <db_File> <userInputPassword> <username>");
+            //System.out.println("Usage: java SignUp <db_File> <userInputPassword> <username>");
             return;
         }
 
         String dbFile = args[0];
         String userInputPassword = args[1];
         String username = args[2];
-        System.out.println("Database file: " + dbFile);
-        System.out.println("User password: " + userInputPassword);
-        System.out.println("Username: " + username);
 
         // JDBC URL using the provided database file path
         String url = "jdbc:ucanaccess://" + dbFile;
         try {
             // Load the JDBC driver
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+
             // Establish a connection
             try (Connection connection = DriverManager.getConnection(url)) {
-                System.out.println("Connected to database successfully.");
                 // Prepare and execute a query to insert user details
                 String sql = "INSERT INTO userDetails (ID, Password, DOB, Alias, FirstName, LastName) VALUES (?, ?, ?, ?, ?, ?)";
                 try (PreparedStatement statement = connection.prepareStatement(sql)) {
+
                     // Generate a random ID
                     Random rnd = new Random();
                     int ID = 100000 + rnd.nextInt(900000);
+
                     // Set values for the prepared statement
                     statement.setInt(1, ID);
                     statement.setString(2, userInputPassword);
@@ -44,8 +41,8 @@ public class signUp {
                     int rowsAffected = statement.executeUpdate();
                     if (rowsAffected > 0) {
                         System.out.println("User details inserted successfully.");
-                        // Open the default web browser and navigate to the home page
-                        Desktop.getDesktop().browse(new File("index.html").toURI());
+                        // Output the ID in the expected format
+                        System.out.println("ID: " + ID);
                     } else {
                         System.out.println("User details insertion failed.");
                     }

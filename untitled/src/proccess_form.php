@@ -1,5 +1,9 @@
 <?php
 session_start();
+
+// Reset the user ID session variable
+$_SESSION['user_id'] = '';
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve ID and password from the form
     $id = $_POST["fname"];
@@ -13,18 +17,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $db_file = "C:/Users/30125391/OneDrive - NESCol/digital skills/untitled/TorWeb.accdb";
 
     //$_SESSION['ID'] = $_POST["fname"];
-    $_SESSION['ID'] = $id;
+    $_SESSION['user_id'] = $id;
 
 
     try {
         // Execute the Java program and capture the output
-        $command = "java -cp \"C:\\Apps\\DB\\*;C:\\Users\\30125391\\OneDrive - NESCol\\digital skills\\untitled\\out\\production\\untitled\" signIn \"$db_file\" $escaped_id $escaped_password";
+        $command = "java -cp \"C:\\Apps\\lib\\*;C:\\Users\\30125391\\OneDrive - NESCol\\digital skills\\untitled\\out\\production\\untitled\" signIn \"$db_file\" $escaped_id $escaped_password";
         $output = shell_exec($command);
 
         // Check if authentication was successful
         if ($output !== null && strpos($output, "authenticated") !== false) {
             // Store the ID in a session variable
             $_SESSION['user_id'] = $id;
+
 
             // Redirect to profile page
             header("Location: ./profile.php");
