@@ -99,7 +99,6 @@ $profile_picture_src = basename($profile_picture_path);
         <li><a href="contactus.html">Contact Us</a></li>
     </ul>
     <link rel="stylesheet" href="CSS.css">
-    <script src="script.js"></script>
     <style>
         .dob-container {
             display: flex;
@@ -146,6 +145,28 @@ $profile_picture_src = basename($profile_picture_path);
             height: 250px;
             /* Adjust the height as needed */
         }
+
+        @media only screen and (max-width: 820px) {
+            .form-group {
+
+                margin-top: 500px;
+                /* Adjust the top margin as needed */
+            }
+
+            #bio {
+                width: 100%;
+                margin-left: 0;
+                margin-top: 5px;
+                /* Adjust the top margin as needed */
+            }
+        }
+
+        /* Added style to move the upload button up */
+        #profile-picture {
+            
+            top: 60px; /* Adjust the top position as needed */
+            left: 20px;
+        }
     </style>
 </head>
 
@@ -154,8 +175,11 @@ $profile_picture_src = basename($profile_picture_path);
 <hr>
 <h2>Profile</h2>
 
+
+
 <form action="" method="post" enctype="multipart/form-data">
     <div class="dob-container">
+
         <div>
             <p><b>DoB</b></p>
             <p><b>Username</b></p>
@@ -174,8 +198,12 @@ $profile_picture_src = basename($profile_picture_path);
 
         <input type="text" id="ID" name="ID" placeholder="<?php echo $user_id; ?>" style="width: 197px; height: 35px; margin-top: 303px; margin-left: -205px" readonly>
 
-        <label for="bio">Bio:</label>
-        <textarea id="bio" name="bio" rows="10" cols="50" style="resize: none; margin-left: -20px; margin-bottom: 300px;"><?php echo $bio; ?></textarea>
+        <div class="form-group">
+
+            <label for="bio">Bio:</label>
+
+            <textarea id="bio" name="bio" placeholder="<?php echo $bio; ?>" rows="10" cols="50" style="resize: none; margin-left: -20px; margin-bottom: 300px;"></textarea>
+        </div>
 
         <input type="submit" value="Update Profile">
 
@@ -206,12 +234,6 @@ $profile_picture_src = basename($profile_picture_path);
         <input type="submit" value="Upload Profile Picture">
     </div>
 </form>
-
-<div class="font-buttons">
-    <button onclick="increaseFontSize()">Increase Font Size</button>
-    <button onclick="resetFontSize()">Reset Font Size</button>
-</div>
-
 
 </body>
 </html>

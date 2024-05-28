@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     try {
         // Execute the Java program and capture the output
-        $command = "java -cp \"C:\\Apps\\lib\\*;C:\\Users\\30125391\\OneDrive - NESCol\\digital skills\\untitled\\out\\production\\untitled\" signIn \"$db_file\" $escaped_id $escaped_password";
+        $command = "java -cp \"C:\\Users\\30125391\\OneDrive - NESCol\\digital skills\\untitled\\lib\\*;C:\\Users\\30125391\\OneDrive - NESCol\\digital skills\\untitled\\out\\production\\untitled\" signIn \"$db_file\" $escaped_id $escaped_password";
         $output = shell_exec($command);
 
         // Check if authentication was successful

@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="CSS.css">
     <script src="script.js"></script>
     <style>
-        /* Add your CSS styles here */
+        
     </style>
 </head>
 <body>
@@ -20,7 +20,7 @@
 <hr>
 <h2>Photos</h2>
 <br>
-<div id="photo-container" style="width:550px;height:400px;position: fixed;right: 0;top: 200px;line-height:3em;overflow:scroll;padding:5px;background-color:#FCFADD;color:#714D03;border:4px double #DEBB07; z-index: 999;">
+<div class="scrollable-div" style="width:550px;height:400px;position: absolute;right: 0;top: 200px;line-height:3em;overflow:scroll;padding:5px;background-color: gray;color:white;border:4px double darkgrey; z-index: 999;">
     Scroll To See Photos.
 
     <figure id="image1">
@@ -39,7 +39,7 @@
     </figure>
 </div>
 
-<form action="upload.php" method="post" enctype="multipart/form-data" id="uploadForm">
+<form action="upload.php" method="post" enctype="multipart/form-data" id="uploadForm" class="button-container">
 
     <input type="hidden" name="MAX_FILE_SIZE" value="2000000">
 

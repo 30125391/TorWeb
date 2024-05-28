@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     try {
         // Execute the Java program and capture the output
-        $command = "java -cp \"C:\\Apps\\lib\\*;C:\\Users\\30125391\\OneDrive - NESCol\\digital skills\\untitled\\out\\production\\untitled\" signUp \"$db_file\" \"$password\" \"$username\"";
+        $command = "java -cp \"C:\\Users\\30125391\\OneDrive - NESCol\\digital skills\\untitled\\lib\\*;C:\\Users\\30125391\\OneDrive - NESCol\\digital skills\\untitled\\out\\production\\untitled\" signUp \"$db_file\" \"$password\" \"$username\"";
         $output = shell_exec($command);
 
         // Extract the ID from the output

@@ -7,10 +7,21 @@ body, h1, h2, h3, ul, li, p, form {
 body {
     background-color: #7b0986;
     color: white;
+    justify-content: center;
+    align-items: center;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
 }
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #7b0986;
+}
+
 lab{
     margin-top: -50px;
 }
@@ -58,8 +69,6 @@ hr {
     border-top: 8px solid #878787;
     margin: 20px 0;
 }
-
-
 
 
 .form-group {
@@ -169,6 +178,7 @@ scroll-container {
 /* Optional: Style for the form */
 uploadForm {
     padding: 10px; /* Add padding for better appearance */
+
 }
 
 .button-large {
@@ -211,7 +221,7 @@ uploadForm {
     }
 }
 
-@media only screen and (max-width: 850px) {
+@media only screen and (max-width: 1200px) {
     .button-container {
         position: relative;
         top: 350px;
@@ -230,14 +240,22 @@ uploadForm {
 }
 
 @media only screen and (max-width: 765px) {
-    iframe {
-        height: 200px;
-        width: 90%;
-        max-width: none;
-        margin: 0 auto;
-        display: block;
-        margin-top: 20px;
-        margin-bottom: 20px;
-    }
+  iframe {
+    height: 200px;
+    width: 90%; 
+    max-width: none; 
+    margin: 0 auto; 
+    display: block; 
+    margin-top: 20px; 
+    margin-bottom: 20px; 
+  }
+}
+.font-buttons {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
 }
 
+.center-form {
+  text-align: center;
+}
