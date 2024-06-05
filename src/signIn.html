@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>TorWeb</title>
+    <link rel="stylesheet" href="CSS.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+
+<button type="button" onclick="window.location.href='signUp.html';">Sign Up</button>
+<h1>TorWeb</h1>
+
+<hr>
+
+<div class="form-container">
+    <form action="proccess_form.php" method="post">
+        <div class="form-group">
+            <label for="fname">ID</label>
+            <input type="text" id="fname" name="fname">
+        </div>
+        <div class="form-container">
+            <label for="lname">Password</label>
+            <input type="password" id="lname" name="lname">
+        </div>
+        <input type="submit" value="Submit">
+    </form>
+</div>
+<br>
+<div class="font-buttons">
+    <button onclick="increaseFontSize()">Increase Font Size</button>
+    <button onclick="resetFontSize()">Reset Font Size</button>
+</div>
+
+</body>
+
+</html>

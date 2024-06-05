@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="CSS.css">
+    <script src="script.js"></script>
+    <title>TorWeb</title>
+</head>
+<body>
+
+<button type="button" onclick="window.location.href='signIn.html';">Sign In</button>
+
+<h1>TorWeb</h1>
+
+<hr>
+<div class="form-container">
+    <form method="POST" action="action_page.php">
+        <div class="form-group">
+            <label for="userInputID">Username</label>
+            <input type="text" id="userInputID" name="userInputID">
+        </div>
+        <div class="form-container">
+            <label for="userInputPassword">Password</label>
+            <input type="password" id="userInputPassword" name="userInputPassword">
+        </div>
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+<div class="font-buttons">
+    <button onclick="increaseFontSize()">Increase Font Size</button>
+    <button onclick="resetFontSize()">Reset Font Size</button>
+</div>
+
+</body>
+</html>

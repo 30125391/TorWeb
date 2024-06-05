@@ -1,0 +1,261 @@
+oijn
+body, h1, h2, h3, ul, li, p, form {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #7b0986;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #7b0986;
+}
+
+lab{
+    margin-top: -50px;
+}
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+    margin-top: 50px;
+}
+
+
+ul {
+    list-style-type: none;
+    overflow: hidden;
+    background-color: #857a7a;
+}
+
+li {
+    float: left;
+    width: 20%;
+    box-sizing: border-box;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #b8b8b8;
+}
+
+hr {
+    border: none;
+    border-top: 8px solid #878787;
+    margin: 20px 0;
+}
+
+
+.form-group {
+    display: inline-block;
+    width: 200px;
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.signup input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+
+.sign-out-button button:hover {
+    background-color: #878787;
+}
+
+
+p {
+    padding: 10px;
+    text-align: justify;
+}
+
+
+iframe {
+    display: block;
+    margin: 0 auto;
+    margin-top: -150px;
+    margin-right: 70px;
+}
+
+
+button {
+    background-color: #878787;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+input[type="submit"] {
+    width: auto;
+    background-color: #878787;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #b8b8b8;
+
+}
+
+b{
+    display: inline-block;
+    width: 150px;
+    height: 30px;
+    padding: 0%;
+    border: 5px solid gray;
+    margin: 0px;
+    margin-bottom: -20px;
+}
+
+.rounded-border {
+    border: 10px solid #898080;
+    border-radius: 10px;
+    padding: 10px;
+    width: 13cm;
+}
+img {
+    width: 325px;
+    margin-right: 60px;
+}
+
+.input[type="file"],
+input[type="submit"] {
+    margin-right: 10px;
+    margin-top: 100px;
+}
+
+.sign-out-button {
+    position: fixed;
+    bottom: 0;
+    left: 15px;
+    margin: 20px;
+}
+
+
+scroll-container {
+    overflow-x: auto; /* Enable horizontal scrolling */
+    white-space: nowrap; /* Prevent line breaks */
+    width: 300px; /* Adjust the width as needed */
+}
+
+/* Optional: Style for the form */
+uploadForm {
+    padding: 10px; /* Add padding for better appearance */
+
+}
+
+.button-large {
+    font-size: 20px; /* Adjust font size as needed */
+    padding: 15px 20px; /* Adjust padding as needed*/
+}
+
+
+/* CSS for file upload container */
+.file-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align items to the left side */
+}
+
+/* CSS for larger buttons */
+#uploadForm input[type="file"] {
+    font-size: 18px; /* Adjust the font size to make the buttons larger */
+    padding: 10px 20px; /* Adjust the padding to increase the button size */
+}
+
+#uploadForm input[type="button"] {
+    font-size: 18px;
+    padding: 10px 20px;
+    margin-left: 20px;
+
+}
+
+
+
+/* CSS for button container */
+.button-container {
+    margin-top: 200px;
+    margin-left: 20px;
+}
+
+@media only screen and (max-width: 810px) {
+    .text-container {
+        width: 85% !important;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .button-container {
+        position: relative;
+        top: 350px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+
+    .scrollable-div {
+        width: 90%;
+        max-width: 100%;
+        position: relative;
+        top: 0;
+        right: auto;
+    }
+}
+
+@media only screen and (max-width: 765px) {
+  iframe {
+    height: 200px;
+    width: 90%; 
+    max-width: none; 
+    margin: 0 auto; 
+    display: block; 
+    margin-top: 20px; 
+    margin-bottom: 20px; 
+  }
+}
+.font-buttons {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+}
+
+.center-form {
+  text-align: center;
+}
